@@ -9,10 +9,19 @@ import sys
 import time
 from datetime import timedelta
 
+
 # ====== CONFIGURATION ======
-EMAIL = "gmendoza4458@gmail.com"
-PASSWORD = "lvorciltasntbusb"  
+import os
+EMAIL = os.environ.get("GMAIL_ADDRESS")
+PASSWORD = os.environ.get("GMAIL_APP_PASSWORD")
 IMAP_SERVER = "imap.gmail.com"
+
+if not EMAIL or not PASSWORD:
+    print("❌ Error: GMAIL_ADDRESS and GMAIL_APP_PASSWORD environment variables must be set.")
+    print("   Run: export GMAIL_ADDRESS='your_email@gmail.com'")
+    print("   Run: export GMAIL_APP_PASSWORD='your_app_password'")
+    sys.exit(1)
+# ==========================
 # ==========================
 
 KEYWORDS = [
